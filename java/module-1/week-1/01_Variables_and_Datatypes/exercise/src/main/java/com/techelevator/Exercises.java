@@ -26,6 +26,9 @@ public class Exercises {
         3. 3 raccoons are playing in the woods. 2 go home to eat dinner. How
         many raccoons are left in the woods?
         */
+		int numberOfRaccoons = 3;
+		int numberOfRaccoonsThatLeft = 2;
+		int numberOfRaccoonsThatRemain = numberOfRaccoons - numberOfRaccoonsThatLeft;
 
 
         /* Exercise 4
