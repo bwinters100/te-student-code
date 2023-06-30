@@ -17,7 +17,7 @@ public class Exercise03_ShippingTotal {
      * Scamper Shipping Company charges $0.50 per pound for items up to and
      * including 40 pounds. It charges $0.75 per pound for items over 40 pounds.
      * Return the shipping rate when provided a weight in pounds.
-     * 
+     *
      * Examples:
      * calculateShippingRate(10) ➔ 0.50
      * calculateShippingRate(25) ➔ 0.50
@@ -25,7 +25,12 @@ public class Exercise03_ShippingTotal {
      * calculateShippingRate(45) ➔ 0.75
      */
     public double calculateShippingRate(int weightPounds) {
-        return 0.0;
+        if (weightPounds <= 40) {
+            return UP_TO_40_LB_RATE;
+        } else {
+            double snippingRate = weightPounds * OVER_40_LB_RATE;
+            return OVER_40_LB_RATE;
+        }
     }
 
     /*
@@ -33,9 +38,9 @@ public class Exercise03_ShippingTotal {
      * including 40 pounds. It charges $0.75 per pound for items over 40 pounds.
      * Implement the logic needed to calculate the shipping cost when provided a
      * weight in pounds.
-     * 
+     *
      * You may use calculateShippingRate() in your solution.
-     * 
+     *
      * Examples:
      * calculateShippingTotal(10) ➔ 5.0
      * calculateShippingTotal(25) ➔ 12.5
@@ -43,8 +48,16 @@ public class Exercise03_ShippingTotal {
      * calculateShippingTotal(45) ➔ 33.75
      */
     public double calculateShippingTotal(int weightPounds) {
-        return 0.0;
+        if (weightPounds <= 40) {
+            double shippingRate = UP_TO_40_LB_RATE * weightPounds;
+            return shippingRate;
+        } else {
+            double shippingWeight = OVER_40_LB_RATE * weightPounds;
+            return shippingWeight;
+        }
     }
+
+
 
     /*
      * Scamper Shipping Company now allows customers to provide a discount code to
@@ -65,7 +78,13 @@ public class Exercise03_ShippingTotal {
      * calculateShippingTotal(45, true) ➔ 30.375
      */
     public double calculateShippingTotal(int weightPounds, boolean hasDiscount) {
-        return 0.0;
+        if (hasDiscount){
+            return calculateShippingTotal(weightPounds)*.90;
+
+        }
+        else {
+            return calculateShippingTotal(weightPounds);
+        }
     }
 
 }
