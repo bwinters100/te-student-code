@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.util.Map;
+
 public class Exercise03_Shirts {
 
     private final static char SMALL_TSHIRT = 'S';
@@ -17,7 +19,8 @@ public class Exercise03_Shirts {
     buildOrder() → ['S', 'S', 'S', 'M', 'M', 'L']
      */
     public char[] buildOrder() {
-        return new char[] {};    
+        char[] orderSix = new char[]{SMALL_TSHIRT, SMALL_TSHIRT, SMALL_TSHIRT, MEDIUM_TSHIRT, MEDIUM_TSHIRT, LARGE_TSHIRT};
+        return  orderSix;
     }
 
     /*
@@ -37,7 +40,20 @@ public class Exercise03_Shirts {
     buildBulkOrder(0) → []
      */
     public char[] buildBulkOrder(int numberOfShirts) { 
-        return new char[] {};    
+        char[] orderNeg = new char[numberOfShirts];
+        int i = 0;
+        while(numberOfShirts > 0 ){
+            if(i % 3 == 0 ){
+                orderNeg[i] = SMALL_TSHIRT;
+            } else if (i % 3 == 1) {
+                orderNeg[i] = MEDIUM_TSHIRT;
+            } else{
+                orderNeg[i] = LARGE_TSHIRT;
+            }
+            i++;
+            numberOfShirts--;
+        }
+        return orderNeg;
     }
 
     /*
@@ -54,6 +70,11 @@ public class Exercise03_Shirts {
     placeRequest([]) → false
      */
     public boolean placeRequest(char[] order) {
-        return false; 
+        for(int i = 0; i < order.length; i ++){
+            if( order[i] == SMALL_TSHIRT){
+                return true;
+            }
+        }
+        return false;
     }
 }

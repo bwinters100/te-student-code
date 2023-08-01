@@ -27,7 +27,11 @@ public class Exercise02_BoardingGate {
     generateSeatingChart(2) → [AVAILABLE, AVAILABLE]
      */
     public boolean[] generateSeatingChart(int numberOfSeats) {
-        return new boolean[] {};
+        boolean[] outcome = new boolean[numberOfSeats];
+        for (int i = 0; i < numberOfSeats; i++) {
+            outcome[i] = AVAILABLE;
+        }
+        return outcome;
     }
 
     /*
@@ -46,7 +50,14 @@ public class Exercise02_BoardingGate {
     getAvailableSeatCount([]) → 0
      */
     public int getAvailableSeatCount(boolean[] seatingChart) {
-        return 0;
+        int count = 0;
+        for (int i = 0; i < seatingChart.length; i++) {
+            if (seatingChart[i]) {
+                count++;
+            }
+
+        }
+        return count;
     }
 
     /*
@@ -62,7 +73,13 @@ public class Exercise02_BoardingGate {
     getNumberOfFullRows([OCCUPIED, AVAILABLE, AVAILABLE, OCCUPIED, AVAILABLE, AVAILABLE]) → 0
      */
     public int getNumberOfFullRows(boolean[] seatingChart) {
-        return 0;
-    }
+        int count = 0;
+        for (int i = 0; i < seatingChart.length; i = i + 3) {
+            if (!seatingChart[i] && !seatingChart[i + 1] && !seatingChart[i + 2]) {
+                count++;
+            }
 
+        }
+        return count;
+    }
 }
