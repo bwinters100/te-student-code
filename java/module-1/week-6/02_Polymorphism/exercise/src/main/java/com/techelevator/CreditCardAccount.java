@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class CreditCardAccount {
+public class CreditCardAccount implements Accountable {
     private String accountHolder;
     private String accountNumber;
     private int debt;

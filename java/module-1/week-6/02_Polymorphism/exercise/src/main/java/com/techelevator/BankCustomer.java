@@ -33,13 +33,13 @@ public class BankCustomer {
         this.phoneNumber = phoneNumber;
     }
     public Accountable[] getAccounts() {
-        return accounts.toArray(new Accountable[0]);
+        return accounts.toArray(new Accountable[accounts.size()]);
     }
     public void addAccount(Accountable newAccount){
         accounts.add(newAccount);
     }
     public boolean isVip(){
-        double sum = 0.0;
+        int sum = 0;
         for(Accountable account : accounts){
             sum = sum + account.getBalance();
         }
