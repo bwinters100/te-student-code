@@ -8,14 +8,10 @@ public class SavingsAccount extends BankAccount{
         super(accountHolderName, accountNumber, balance);
     }
     public int withdraw(int amountToWithdraw){
-        if(amountToWithdraw <= getBalance()){
+        if(amountToWithdraw <= getBalance() && (getBalance() - (amountToWithdraw + 2) >= 0) ){
             super.withdraw(amountToWithdraw);
-            if(getBalance() < 150){
-                if(super.withdraw(2) > 0)
+            if(getBalance() < 150) {
                 super.withdraw(2);
-                else {
-                    return getBalance();
-                }
             }
         }return getBalance();
     }
