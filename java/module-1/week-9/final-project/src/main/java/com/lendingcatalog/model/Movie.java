@@ -9,9 +9,9 @@ import java.util.UUID;
 
 public class Movie implements CatalogItem {
     private String id;
-    private static String name;
-    private static String director;
-    private static LocalDate releaseDate;
+    private final String name;
+    private final String director;
+    private final LocalDate releaseDate;
 
     public Movie(String name, String director, LocalDate releaseDate){
         this.name = name;

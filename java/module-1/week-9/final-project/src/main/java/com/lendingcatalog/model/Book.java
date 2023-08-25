@@ -9,9 +9,9 @@ import java.util.UUID;
 
 public class Book implements CatalogItem{
     private String id;
-    private static String title;
-    private static String author;
-    private static LocalDate publishDate;
+    private final String title;
+    private final String author;
+    private final LocalDate publishDate;
 
     public Book(String title, String author, LocalDate publishDate){
         this.title = title;
@@ -38,7 +38,7 @@ public class Book implements CatalogItem{
 
     @Override
     public boolean matchesYear(int searchYear) {
-        
+
         return publishDate.equals(searchYear);
 
     }

@@ -9,9 +9,9 @@ import java.util.UUID;
 
 public class Tool implements CatalogItem{
     private String id;
-    private static String type;
-    private static String manufacturer;
-    private int count;
+    private final String type;
+    private final String manufacturer;
+    private final int count;
 
     public Tool(String type, String manufacturer, int count){
         this.type = type;
