@@ -1,9 +1,16 @@
 package com.lendingcatalog.model;
 
+import com.lendingcatalog.util.FileStorageService;
+import com.lendingcatalog.util.exception.FileStorageException;
+
+import java.time.LocalDate;
+import java.util.Locale;
+import java.util.UUID;
+
 public class Tool implements CatalogItem{
     private String id;
-    private String type;
-    private String manufacturer;
+    private static String type;
+    private static String manufacturer;
     private int count;
 
     public Tool(String type, String manufacturer, int count){
@@ -21,12 +28,12 @@ public class Tool implements CatalogItem{
 
     @Override
     public boolean matchesName(String searchStr) {
-        return false;
+        return type.toLowerCase(Locale.ROOT).contains(searchStr.toLowerCase(Locale.ROOT));
     }
 
     @Override
     public boolean matchesCreator(String searchStr) {
-        return false;
+        return manufacturer.toLowerCase(Locale.ROOT).contains(searchStr.toLowerCase(Locale.ROOT));
     }
 
     @Override
@@ -36,6 +43,11 @@ public class Tool implements CatalogItem{
 
     @Override
     public void registerItem() {
-
+        id = UUID.randomUUID().toString();
+        try {
+            FileStorageService.writeContentsToFile(LocalDate.now() + this.toString() + " was registered", "Tools.log", true);
+        } catch (FileStorageException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -17,7 +17,7 @@ public class PracticePart1 {
 		Q01_removeFraction(8.0, 2.5) -> 3.0
 	*/
 	public double Q01_removeFraction(double numerator, double denominator) {
-		return 0;
+		return numerator / denominator;
 	}
 
 	/*
@@ -33,9 +33,13 @@ public class PracticePart1 {
 		Q02_isWaterTemperatureExtreme(33) -> false
 		Q02_isWaterTemperatureExtreme(212) -> true
 	*/
-	public boolean Q02_isWaterTemperatureExtreme(int temperature) {
-		return false;
-	}
+		public boolean Q02_isWaterTemperatureExtreme ( int temperature){
+			if (temperature >= 212 || temperature <= 32) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 
 	/*
 	Topics: Branching
@@ -57,9 +61,9 @@ public class PracticePart1 {
 		Q03_isLeapYear(2008) -> true
 		Q03_isLeapYear(2019) -> false
 	*/
-	public boolean Q03_isLeapYear(int year) {
-		return false;
-	}
+		public boolean Q03_isLeapYear ( int year){
+			return false;
+		}
 
 	/*
 	Topics: Branching
@@ -78,9 +82,13 @@ public class PracticePart1 {
 		Q04_carWashPrice('P', false, true) -> 12
 		Q04_carWashPrice('P', true, true) -> 11
 	*/
-	public int Q04_carWashPrice(char typeOfWash, boolean isMorning, boolean isWeekend) {
-		return 0;
-	}
+		public int Q04_carWashPrice ( char typeOfWash, boolean isMorning, boolean isWeekend){
+			if (typeOfWash == 'B') {
+				if (isMorning) {
+
+				}
+			}
+		}
 
 	/*
 	Topics: Loops
@@ -95,9 +103,9 @@ public class PracticePart1 {
 		 Q05_sumOfNumbersDivisibleBy7Between(48, 57) -> 105
 		 Q05_sumOfNumbersDivisibleBy7Between(56, 49) -> 0
 	*/
-	public int Q05_sumOfNumbersDivisibleBy7Between(int lowestNumber, int highestNumber) {
-		return 0;
-	}
+		public int Q05_sumOfNumbersDivisibleBy7Between ( int lowestNumber, int highestNumber){
+			return 0;
+		}
 
 	/*
 	Topics: Strings, Branching
@@ -116,9 +124,9 @@ public class PracticePart1 {
 		Q06_wordBetweenTags("<P>This is between.<P>", "<Q>") -> "" // Tag <Q> not found.
 		Q06_wordBetweenTags("<P>This is between.", "<P>") -> "" // End tag <P> not found.
 	*/
-	public String Q06_stringBetweenTags(String stringToSearch, String tag) {
-		return null;
-	}
+		public String Q06_stringBetweenTags (String stringToSearch, String tag){
+			return null;
+		}
 
 	/*
 	Topics: Strings, Loops
@@ -139,13 +147,13 @@ public class PracticePart1 {
 		Q07_isPalindrome("toot") -> true
 		Q07_isPalindrome("effete") -> false
 	*/
-	public boolean Q07_isPalindrome(String word) {
-		String reverseWord = "";
-		for (int i = 0; i < word.length(); i++) {
-			reverseWord += word.charAt(i);
+		public boolean Q07_isPalindrome (String word){
+			String reverseWord = "";
+			for (int i = 0; i < word.length(); i++) {
+				reverseWord += word.charAt(i);
+			}
+			return word.equalsIgnoreCase(reverseWord);
 		}
-		return word.equalsIgnoreCase(reverseWord);
-	}
 
 	/*
 	Topics: Expressions
@@ -165,10 +173,10 @@ public class PracticePart1 {
 	Q08_allowanceCalculator(7, 100, 0) -> 8
 	Q08_allowanceCalculator(7, 0, 40) -> 10
 	*/
-	public int Q08_allowanceCalculator(int weekly, int gift, int bonus) {
-		int allowance = weekly + gift + bonus * 4 / 52;
-		return allowance;
-	}
+		public int Q08_allowanceCalculator ( int weekly, int gift, int bonus){
+			int allowance = weekly + gift + bonus * 4 / 52;
+			return allowance;
+		}
 
 	/*
 	Topics: Arrays, Loops
@@ -188,16 +196,16 @@ public class PracticePart1 {
 		Q09_isIncreasing(new int[]{2, 4, 8, 7, 256}) -> false
 		Q09_isIncreasing(new int[]{2, 1, 8, 32, 256}) -> false
 	*/
-	public boolean Q09_isIncreasing(int[] numbers) {
-		boolean result = true;
-		for (int i = 0; i < numbers.length - 1; i++) {
-			if (numbers[i] > numbers[i++]) {
-				result = false;
-				break;
+		public boolean Q09_isIncreasing ( int[] numbers){
+			boolean result = true;
+			for (int i = 0; i < numbers.length - 1; i++) {
+				if (numbers[i] > numbers[i++]) {
+					result = false;
+					break;
+				}
 			}
+			return result;
 		}
-		return result;
-	}
 
 	/*
 	Topics: Lists, Loops
@@ -212,9 +220,9 @@ public class PracticePart1 {
 		Q10_reverseList(new ArrayList<>(List.of(55))) -> [55]
 		Q10_reverseList(new ArrayList<>(List.of())) -> []
 	*/
-	public List<Integer> Q10_reverseList(List<Integer> numbers) {
-		return new ArrayList<>();
-	}
+		public List<Integer> Q10_reverseList (List < Integer > numbers) {
+			return new ArrayList<>();
+		}
 
 	/*
 	Topics: Loops, Arrays, Collections
@@ -236,7 +244,7 @@ public class PracticePart1 {
 		 Q11_idealPets(["Dog", "Cat", "Chicken", "Fish", "Dog", "Dinosaur", "Cat", "Dog", "Llama"])
 		 	-> {"Dog": 3, "Chicken": 1, "Fish": 1, "Cat": 2, "Dinosaur": 1, "Llama": 1}
 	*/
-	public Map<String, Integer> Q11_idealPets(String[] suggestedPets) {
-		return new HashMap<>();
+		public Map<String, Integer> Q11_idealPets (String[]suggestedPets){
+			return new HashMap<>();
+		}
 	}
-}
