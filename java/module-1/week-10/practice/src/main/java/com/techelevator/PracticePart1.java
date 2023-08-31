@@ -17,7 +17,10 @@ public class PracticePart1 {
 		Q01_removeFraction(8.0, 2.5) -> 3.0
 	*/
 	public double Q01_removeFraction(double numerator, double denominator) {
-		return numerator / denominator;
+	double noFrac = numerator / denominator;
+	int rmovDub = (int) noFrac;
+	return rmovDub;
+
 	}
 
 	/*
@@ -62,7 +65,13 @@ public class PracticePart1 {
 		Q03_isLeapYear(2019) -> false
 	*/
 		public boolean Q03_isLeapYear ( int year){
-			return false;
+			if((year % 400 == 0)){
+				return true;
+			}
+			else if(year % 400 != 0 && year % 100 == 0){
+				return false;
+			}
+			return (year % 4 == 0 && year % 100 != 0);
 		}
 
 	/*
@@ -82,12 +91,25 @@ public class PracticePart1 {
 		Q04_carWashPrice('P', false, true) -> 12
 		Q04_carWashPrice('P', true, true) -> 11
 	*/
-		public int Q04_carWashPrice ( char typeOfWash, boolean isMorning, boolean isWeekend){
-			if (typeOfWash == 'B') {
-				if (isMorning) {
-
+		public int Q04_carWashPrice ( char typeOfWash, boolean isMorning, boolean isWeekend) {
+			int bPrice = 8;
+			int pPrice = 10;
+			int sPrice = 12;
+			int totalCharge = 0;
+				if (typeOfWash == 'B') {
+					totalCharge = bPrice;
+				} else if (typeOfWash == 'P') {
+					totalCharge = pPrice;
+				} else if (typeOfWash == 'S') {
+					totalCharge = sPrice;
 				}
+			if(isMorning){
+				totalCharge--;
 			}
+			if(isWeekend){
+				totalCharge = totalCharge + 2;
+			}
+			return totalCharge;
 		}
 
 	/*
@@ -104,7 +126,13 @@ public class PracticePart1 {
 		 Q05_sumOfNumbersDivisibleBy7Between(56, 49) -> 0
 	*/
 		public int Q05_sumOfNumbersDivisibleBy7Between ( int lowestNumber, int highestNumber){
-			return 0;
+			int sum = 0;
+			for(int i = lowestNumber; i <= highestNumber; i++){
+				if(i % 7 == 0){
+					sum = sum + i;
+				}
+			}
+			return sum;
 		}
 
 	/*
@@ -125,7 +153,13 @@ public class PracticePart1 {
 		Q06_wordBetweenTags("<P>This is between.", "<P>") -> "" // End tag <P> not found.
 	*/
 		public String Q06_stringBetweenTags (String stringToSearch, String tag){
-			return null;
+			int startTagIndex = stringToSearch.indexOf(tag);
+			int endTagIndex = stringToSearch.indexOf(tag, startTagIndex + 1);
+
+			if(startTagIndex != -1 && endTagIndex != -1){
+				return stringToSearch.substring(startTagIndex + tag.length(), endTagIndex);
+			}
+			return "";
 		}
 
 	/*
@@ -149,7 +183,7 @@ public class PracticePart1 {
 	*/
 		public boolean Q07_isPalindrome (String word){
 			String reverseWord = "";
-			for (int i = 0; i < word.length(); i++) {
+			for (int i = word.length()-1; i >= 0; i--) {
 				reverseWord += word.charAt(i);
 			}
 			return word.equalsIgnoreCase(reverseWord);
@@ -174,7 +208,7 @@ public class PracticePart1 {
 	Q08_allowanceCalculator(7, 0, 40) -> 10
 	*/
 		public int Q08_allowanceCalculator ( int weekly, int gift, int bonus){
-			int allowance = weekly + gift + bonus * 4 / 52;
+			int allowance = weekly + ((gift + bonus * 4) / 52);
 			return allowance;
 		}
 
@@ -199,7 +233,7 @@ public class PracticePart1 {
 		public boolean Q09_isIncreasing ( int[] numbers){
 			boolean result = true;
 			for (int i = 0; i < numbers.length - 1; i++) {
-				if (numbers[i] > numbers[i++]) {
+				if (numbers[i] > numbers[i+1]) {
 					result = false;
 					break;
 				}
@@ -221,7 +255,11 @@ public class PracticePart1 {
 		Q10_reverseList(new ArrayList<>(List.of())) -> []
 	*/
 		public List<Integer> Q10_reverseList (List < Integer > numbers) {
-			return new ArrayList<>();
+			List<Integer> newNumbers = new ArrayList<>();
+			for(int i = numbers.size()-1; i >= 0; i--){
+				newNumbers.add(numbers.get(i));
+			}
+			return newNumbers;
 		}
 
 	/*
@@ -245,6 +283,15 @@ public class PracticePart1 {
 		 	-> {"Dog": 3, "Chicken": 1, "Fish": 1, "Cat": 2, "Dinosaur": 1, "Llama": 1}
 	*/
 		public Map<String, Integer> Q11_idealPets (String[]suggestedPets){
-			return new HashMap<>();
+			Map<String, Integer> idealPetMap = new HashMap<String, Integer>();
+			for(String pets : suggestedPets){
+				if(idealPetMap.containsKey(pets)){
+					idealPetMap.put(pets, idealPetMap.get(pets) +1);
+				}
+				else{
+					idealPetMap.put(pets, 1);
+				}
+			}
+			return idealPetMap;
 		}
 	}
