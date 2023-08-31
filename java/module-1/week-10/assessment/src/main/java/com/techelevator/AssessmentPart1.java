@@ -13,7 +13,9 @@ public class AssessmentPart1 {
 		 Q01_calculateFraction(5, 2) -> 2.5
 	*/
 	public double Q01_calculateFraction(int numerator, int denominator) {
-		return 0.0;
+		double answerOne = 0;
+		answerOne = (double)numerator/denominator;
+		return answerOne;
 	}
 
 	/*
@@ -24,7 +26,12 @@ public class AssessmentPart1 {
 		 Q02_isSumEven(13, 16) -> false
 	*/
 	public boolean Q02_isSumEven(int a, int b) {
-		return false;
+		if( (a + b)%2 == 0){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	/*
@@ -37,7 +44,12 @@ public class AssessmentPart1 {
 		 Q03_moviePrice(21) -> 12
 	*/
 	public int Q03_moviePrice(int age) {
-		return 0;
+		if(age <= 12){
+			return 7;
+		}
+		else{
+			return 12;
+		}
 	}
 
 	/*
@@ -56,7 +68,33 @@ public class AssessmentPart1 {
 		 Q04_moviePriceMatinee(21, true, false) -> 8
 	*/
 	public int Q04_moviePriceMatinee(int age, boolean isBefore5pm, boolean isWeekend) {
-		return 0;
+		int costOfTicket = 0;
+		if(isBefore5pm && !isWeekend){
+			if(age <= 12){
+				costOfTicket += 5;
+			}
+			else{
+				costOfTicket += 8;
+			}
+		}
+		if(!isBefore5pm){
+			if(age <= 12){
+				costOfTicket += 7;
+			}
+			else{
+				costOfTicket += 12;
+			}
+		}
+		if(isBefore5pm && isWeekend){
+		if(age <= 12){
+			costOfTicket += 7;
+		}
+		else{
+			costOfTicket += 12;
+		}
+	}
+
+		return costOfTicket;
 	}
 
 	/*
@@ -69,7 +107,13 @@ public class AssessmentPart1 {
 		 Q05_sumOfOddNumbersBetween(-12, -1) -> -36
 	*/
 	public int Q05_sumOfOddNumbersBetween(int lowestNumber, int highestNumber) {
-		return 0;
+		int sum = 0;
+		for(int i = lowestNumber; i <= highestNumber; i++){
+			if(i%2 != 0){
+				sum = sum + i;
+			}
+		}
+		return sum;
 	}
 
 	/*
@@ -84,7 +128,13 @@ public class AssessmentPart1 {
 		 Q06_firstNCharacters("Submarine", 0) -> ""
 	*/
 	public String Q06_firstNCharacters(String originalString, int numCharacters) {
-		return null;
+		if(originalString.length() < numCharacters){
+			return originalString;
+		}
+		if(numCharacters == 0){
+			return "";
+		}
+		return originalString.substring(0, numCharacters);
 	}
 
 	/*
@@ -100,8 +150,8 @@ public class AssessmentPart1 {
 		 Q07_spaceReplacer("Stop Wait Listen ", "! ") -> "Stop! Wait! Listen! "
 	*/
 	public String Q07_spaceReplacer(String stringValue, String replaceSpaceWith) {
-		stringValue.replace(" ", replaceSpaceWith);
-		return stringValue;
+		return stringValue.replace(" ", replaceSpaceWith);
+
 	}
 
 
@@ -118,7 +168,7 @@ public class AssessmentPart1 {
 		 Q08_convertToFahrenheit(100.0) -> 212.0
 	*/
 	public double Q08_convertToFahrenheit(double degreesCelsius) {
-		double degreesFahrenheit = (9 / 5) * degreesCelsius + 32.0;
+		double degreesFahrenheit = ((9 * degreesCelsius)/5) + 32.0;
 		return degreesFahrenheit;
 	}
 
@@ -135,7 +185,7 @@ public class AssessmentPart1 {
 		 Q09_convertToCelsius(212.0) -> 100.0
 	*/
 	public double Q09_convertToCelsius(double degreesFahrenheit) {
-		double degreesCelsius = degreesFahrenheit - 32.0 * 5.0 / 9.0;
+		double degreesCelsius = ((degreesFahrenheit - 32.0) * 5.0) / 9.0;
 		return degreesCelsius;
 	}
 
@@ -151,7 +201,13 @@ public class AssessmentPart1 {
 		 Q10_swapFirstAndLastElements([1,2]) -> [2,1]
 	*/
 	public int[] Q10_swapFirstAndLastElements(int[] arrayOfInts) {
-		return arrayOfInts;
+		int [] newArray = new int[arrayOfInts.length];
+		newArray = arrayOfInts;
+		int a = arrayOfInts[0];
+		int b = arrayOfInts[arrayOfInts.length-1];
+		newArray[0] = b;
+		newArray[arrayOfInts.length-1] = a;
+		return newArray;
 	}
 
 	/*
@@ -166,7 +222,16 @@ public class AssessmentPart1 {
 		 Q11_mealCount(["Beef", "Chicken", "Fish", "Tofu", "Tofu", "Fish"]) -> {"Beef": 1, "Chicken": 1, "Fish": 2, "Tofu": 2}
 	*/
 	public Map<String, Integer> Q11_mealCount(String[] mealOrders) {
-		return null;
+		Map<String, Integer> mealQuantity = new HashMap<>();
+		for(String meals : mealOrders){
+			if(mealQuantity.containsKey(meals)){
+				mealQuantity.put(meals, mealQuantity.get(meals) + 1);
+			}
+			else{
+				mealQuantity.put(meals, 1);
+			}
+		}
+		return mealQuantity;
 	}
 
 }
