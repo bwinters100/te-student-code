@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import com.techelevator.projects.model.Project;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -30,9 +32,13 @@ public class JdbcEmployeeDao implements EmployeeDao {
 		String sql = EMPLOYEE_SELECT +
 				" WHERE e.employee_id=?";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
-		if (results.next()) {
-			employee = mapRowToEmployee(results);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+			if (results.next()) {
+				employee = mapRowToEmployee(results);
+			}
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException(e.getMessage());
 		}
 
 		return employee;
@@ -43,10 +49,14 @@ public class JdbcEmployeeDao implements EmployeeDao {
 		List<Employee> allEmployees = new ArrayList<>();
 		String sql = EMPLOYEE_SELECT;
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+			while (results.next()) {
+				Employee employeeResult = mapRowToEmployee(results);
+				allEmployees.add(employeeResult);
+			}
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException(e.getMessage());
 		}
 
 		return allEmployees;
@@ -58,10 +68,14 @@ public class JdbcEmployeeDao implements EmployeeDao {
 		String sql = EMPLOYEE_SELECT +
 				" WHERE e.first_name ILIKE ? AND e.last_name ILIKE ?";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + firstName + "%", "%" + lastName + "%");
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + firstName + "%", "%" + lastName + "%");
+			while (results.next()) {
+				Employee employeeResult = mapRowToEmployee(results);
+				allEmployees.add(employeeResult);
+			}
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException(e.getMessage());
 		}
 
 		return allEmployees;
@@ -74,10 +88,14 @@ public class JdbcEmployeeDao implements EmployeeDao {
 				"JOIN project_employee pe ON e.employee_id = pe.employee_id " +
 				"WHERE pe.project_id = ?";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
+			while (results.next()) {
+				Employee employeeResult = mapRowToEmployee(results);
+				allEmployees.add(employeeResult);
+			}
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException(e.getMessage());
 		}
 
 		return allEmployees;
@@ -89,10 +107,14 @@ public class JdbcEmployeeDao implements EmployeeDao {
 		String sql = EMPLOYEE_SELECT +
 				" WHERE e.employee_id NOT IN (SELECT DISTINCT employee_id FROM project_employee)";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
+		try {
+			SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+			while (results.next()) {
+				Employee employeeResult = mapRowToEmployee(results);
+				allEmployees.add(employeeResult);
+			}
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException(e.getMessage());
 		}
 
 		return allEmployees;
@@ -100,22 +122,68 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
 	@Override
 	public Employee createEmployee(Employee employee) {
-		throw new DaoException("createEmployee() not implemented");
+		try {
+			Integer employee_id = jdbcTemplate.queryForObject("Insert into employee (department_id, first_name, last_name, birth_date, hire_date) Values (?,?,?,?,?) RETURNING employee_id;", int.class, employee.getDepartmentId(), employee.getFirstName(), employee.getLastName(), employee.getBirthDate(), employee.getHireDate());
+			employee.setId(employee_id);
+		} catch (DataAccessException e) {
+			throw new DaoException(e.getMessage());
+		}
+		return employee;
 	}
 	
 	@Override
 	public Employee updateEmployee(Employee employee) {
-		throw new DaoException("updateEmployee() not implemented");
+		Employee updatedEmployee = null;
+		try{
+			int numOfRows = jdbcTemplate.update("Update employee set department_id = ?, first_name = ?, last_name = ?, birth_date = ?, hire_date = ? where employee_id = ?;", employee.getDepartmentId(), employee.getFirstName(), employee.getLastName(), employee.getBirthDate(), employee.getHireDate(), employee.getId());
+			if (numOfRows == 0) {
+				throw new DaoException("No Rows Changed");
+			}
+			else{
+				updatedEmployee = getEmployeeById(employee.getId());
+			}
+		} catch (CannotGetJdbcConnectionException e) {
+			throw new DaoException("Unable to connect to server or database", e);
+		} catch (DataIntegrityViolationException e) {
+			throw new DaoException("Data integrity violation", e);
+		}
+		return updatedEmployee;
 	}
 
 	@Override
 	public int deleteEmployeeById(int id) {
-		throw new DaoException("deleteEmployeeById() not implemented");
+		{
+			int numOfRows = 0;
+			String empSQL = "Delete from project_employee where employee_id = ?;";
+			String depSQL = "Delete from employee where employee_id = ?;";
+			try{
+				jdbcTemplate.update(empSQL, id);
+				numOfRows = jdbcTemplate.update(depSQL, id);
+			} catch (CannotGetJdbcConnectionException e) {
+				throw new DaoException("Unable to connect to server or database", e);
+			} catch (DataIntegrityViolationException e) {
+				throw new DaoException("Data integrity violation", e);
+			}
+			return numOfRows;
+		}
 	}
 
 	@Override
 	public int deleteEmployeesByDepartmentId(int departmentId) {
-		throw new DaoException("deleteEmployeeByDepartmentId() not implemented");
+		{
+			int numOfRows = 0;
+			String depSQL = "Delete from department where department_id = ?;";
+			String empSQL = "Delete from employee where department_id = ?;";
+			try{
+				jdbcTemplate.update(depSQL, departmentId);
+				numOfRows = jdbcTemplate.update(empSQL, departmentId);
+			} catch (CannotGetJdbcConnectionException e) {
+				throw new DaoException("Unable to connect to server or database", e);
+			} catch (DataIntegrityViolationException e) {
+				throw new DaoException("Data integrity violation", e);
+			}
+			return numOfRows;
+		}
 	}
 
 	private Employee mapRowToEmployee(SqlRowSet result) {
