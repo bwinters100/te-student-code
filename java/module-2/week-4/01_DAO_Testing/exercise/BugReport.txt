@@ -1,43 +1,46 @@
 Bug 1
 -----
 Test that demonstrates problem:
-
+getTimesheetsByEmployeeId_with_valid_employee_id_returns_list_of_timesheets_for_employee()
 Expected output:
-
+2
 Actual output:
-
+1
 How did you fix this bug?
-
+getTimesheetsByEmployee only returns one result per the if statement. I had to change the if statement to a while loop.
 
 Bug 2
 -----
 Test that demonstrates problem:
-
+getTimesheetsByProjectId_with_valid_id_returns_list_of_all_timesheets_for_project()
 Expected output:
-
+3
 Actual output:
-
+2
 How did you fix this bug?
-
+the from statement in the sql inside the getTimeSheetsByProjectID was listing employee_ids when it should have had project_IDs. Had to change the
+sql code to have it read "where project_id =?"
 
 Bug 3
 -----
 Test that demonstrates problem:
-
+createTimesheet_creates_timesheet()
 Expected output:
-
+1
 Actual output:
-
+5
 How did you fix this bug?
-
+The createTimesheet method had it returning getTimesheetById(newID) but it should have just retured
+timesheet instead.
 
 Bug 4
 -----
 Test that demonstrates problem:
-
+getTimesheetById_with_invalid_id_returns_null_timesheet()
 Expected output:
-
+null
 Actual output:
-
+null
 How did you fix this bug?
-
+no matter what the value other than the actual time sheet ID the value is always null
+we don't technically need this test.
