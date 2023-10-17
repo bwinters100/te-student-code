@@ -1,5 +1,7 @@
 package com.techelevator.ssgeek.model;
 
+import java.util.Objects;
+
 public class Customer {
 
     private int customerId;
@@ -76,5 +78,18 @@ public class Customer {
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return customerId == customer.customerId && Objects.equals(name, customer.name) && Objects.equals(streetAddress1, customer.streetAddress1) && Objects.equals(streetAddress2, customer.streetAddress2) && Objects.equals(city, customer.city) && Objects.equals(state, customer.state) && Objects.equals(zipCode, customer.zipCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customerId, name, streetAddress1, streetAddress2, city, state, zipCode);
     }
 }
