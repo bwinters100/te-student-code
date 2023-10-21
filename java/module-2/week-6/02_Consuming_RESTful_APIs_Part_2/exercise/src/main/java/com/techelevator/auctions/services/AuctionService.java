@@ -1,10 +1,9 @@
 package com.techelevator.auctions.services;
 
 import com.techelevator.util.BasicLogger;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.web.client.ResourceAccessException;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,17 +16,44 @@ public class AuctionService {
 
 
     public Auction add(Auction newAuction) {
-        // place code here
+        try {
+            HttpEntity<Auction> entity = makeEntity(newAuction);
+            return restTemplate.postForObject(API_BASE_URL, newAuction, Auction.class);
+        }catch(ResourceAccessException e) {
+            System.out.println(e.getMessage());
+        }catch(RestClientResponseException e){
+            System.out.println(e.getRawStatusCode());
+        }
         return null;
     }
 
     public boolean update(Auction updatedAuction) {
-        // place code here
+        Auction existingAuction = new Auction();
+        existingAuction.setTitle("GameBoy");
+        existingAuction.setCurrentBid(456);
+        try{
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            HttpEntity<Auction> entity = new HttpEntity<>(existingAuction, headers);
+            restTemplate.put(API_BASE_URL + "/" + updatedAuction.getId(), entity);
+            return true;
+        }catch(ResourceAccessException e) {
+            System.out.println(e.getMessage());
+        }catch(RestClientResponseException e){
+            System.out.println(e.getRawStatusCode());
+        }
         return false;
     }
 
     public boolean delete(int auctionId) {
-        // place code here
+        try{
+            restTemplate.delete(API_BASE_URL + "/" + auctionId);
+            return true;
+        }catch(ResourceAccessException e) {
+            System.out.println(e.getMessage());
+        }catch(RestClientResponseException e){
+            System.out.println(e.getRawStatusCode());
+        }
         return false;
     }
 
