@@ -19,7 +19,7 @@ public class JdbcProductDaoTest extends BaseDaoTests {
 
     @Test
     public void getProductById() {
-        
+
 
     }
 
