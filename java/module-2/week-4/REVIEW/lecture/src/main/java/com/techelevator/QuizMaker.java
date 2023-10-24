@@ -22,7 +22,7 @@ public class QuizMaker {
     }
 
     public QuizMaker() {
-//        String url = System.getenv("DB_URL"); // e.g. jdbc:postgresql://localhost:5432/Quiz
+        //String url = System.getenv("DB_URL"); // e.g. jdbc:postgresql://localhost:5432/Quiz
         String url = "jdbc:postgresql://localhost:5432/Quiz";
         Boolean inMem = Boolean.parseBoolean(System.getenv("IN_MEM"));
         if (inMem) {
@@ -30,10 +30,10 @@ public class QuizMaker {
         } else if (url != null) {
             BasicDataSource dataSource = new BasicDataSource();
             dataSource.setUrl(url);
-            dataSource.setUsername(System.getenv("DB_USER"));
-            dataSource.setPassword(System.getenv("DB_PASSWORD"));
-//            dataSource.setUsername("postgres");
-//            dataSource.setPassword("postgres1");
+            //dataSource.setUsername(System.getenv("DB_USER"));
+            //dataSource.setPassword(System.getenv("DB_PASSWORD"));
+            dataSource.setUsername("postgres");
+            dataSource.setPassword("postgres1");
             Boolean useX = Boolean.parseBoolean(System.getenv("USE_X"));
             dao = useX ? new JdbcQuizQuestionDaoX(dataSource) : new JdbcQuizQuestionDao(dataSource);
         } else {

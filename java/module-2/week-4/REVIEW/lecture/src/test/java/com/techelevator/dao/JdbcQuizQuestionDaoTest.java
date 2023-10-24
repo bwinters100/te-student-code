@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class JdbcQuizQuestionDaoTest extends BaseDaoTests {
+public class    JdbcQuizQuestionDaoTest extends BaseDaoTests {
 
 
     private JdbcQuizQuestionDao dao;
