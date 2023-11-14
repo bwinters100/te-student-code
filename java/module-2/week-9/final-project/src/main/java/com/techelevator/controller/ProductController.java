@@ -2,9 +2,9 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ProductDao;
 import com.techelevator.model.Product;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 @RestController
@@ -17,9 +17,24 @@ public class ProductController {
         this.dao = dao;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Product> getAllProducts(){
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public List<Product> list(@RequestParam(defaultValue = "") String product_sku, @RequestParam(defaultValue = " ") String product_name){
+        if (!product_sku.equals("")) {
+            return dao.getProductBySku(product_sku);
+        }
+        if (product_name.equals("")) {
+            return dao.getProductByName(product_name);
+        }
         return dao.getProducts();
+    }
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    public Product get(@PathVariable int id) {
+        Product product = dao.getProductById(id);
+        if (product == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product Not Found");
+        } else {
+            return dao.getProductById(id);
+        }
     }
     
 }

@@ -10,5 +10,7 @@ public interface ProductDao {
 
     Product getProductById(int id);
 
-    Product getProductBySku(int sku);
+    List<Product> getProductBySku(String sku);
+
+    List<Product> getProductByName(String productName);
 }

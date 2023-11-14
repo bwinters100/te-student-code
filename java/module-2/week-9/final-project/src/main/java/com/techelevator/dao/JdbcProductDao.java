@@ -1,7 +1,6 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Product;
-import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -40,13 +39,23 @@ public class JdbcProductDao implements ProductDao{
     }
 
     @Override
-    public Product getProductBySku(int sku) {
+    public List<Product> getProductBySku(String sku) {
+        List<Product> products = new ArrayList<>();
         SqlRowSet rs = jdbcTemplate.queryForRowSet("Select * from product where product_sku = ?",sku);
         if(rs.next()){
-            Product product = mapProduct(rs);
-            return product;
+            products.add(mapProduct(rs));
+            return products;
         }
-        return null;
+        return products;
+    }
+    public List<Product> getProductByName(String name) {
+        List<Product> products = new ArrayList<>();
+        SqlRowSet rs = jdbcTemplate.queryForRowSet("Select * from product where name = ?",name);
+        if(rs.next()){
+            products.add(mapProduct(rs));
+            return products;
+        }
+        return products;
     }
     private static Product mapProduct(SqlRowSet rs){
         int id = rs.getInt("product_id");
