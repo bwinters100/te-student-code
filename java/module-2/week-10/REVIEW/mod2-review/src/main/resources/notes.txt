@@ -1,0 +1,39 @@
+
+        // PGAdmin
+//        SELECT * FROM student WHERE name LIKE 'Ra%';
+//        SELECT * FROM student WHERE name LIKE '%Ra%';
+//        SELECT * FROM student WHERE name ILIKE '%Ra%';
+
+
+//        INSERT INTO student (id, name, credits) VALUES
+//                (2001, 'Bobby', 500);
+//        INSERT INTO department (code, name) VALUES
+//                ('PSCI', 'Political Science');
+//
+//        DELETE FROM student WHERE id = 2001;
+//        DELETE FROM department WHERE code = 'PSCI';
+//
+//        SELECT s.name, d.name FROM student s
+//        ???? JOIN department d ON s.dept_code = d.code;
+
+
+//        SELECT COUNT(dept_code)
+//        FROM student;
+//
+//        SELECT COUNT(*)
+//        FROM student;
+//
+//        SELECT COUNT(dept_code), dept_code
+//        FROM student
+//        WHERE credits > 100
+//        GROUP BY dept_code;
+
+
+
+https://skynet.wecomeinpeace.com:5050/events/201/tasks?complete=true&group_id=57
+
+- protocol
+- domain
+- port
+- path
+- query parameters
