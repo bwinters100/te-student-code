@@ -1,0 +1,20 @@
+/* this is a comment */
+head {
+  /* style declarations */
+  /* every style declaration consists of two parts: a property and a value */
+  /* seperated by a colon */
+  /* ends with a semi-colon */
+  font-family: Arial, Helvetica, sans-serif;
+  color: bisque;
+  background-color: black;
+}
+body{
+  font-size:x-large;
+  color:dimgray;
+  background-color:burlywood;
+}
+h1{
+  font-size: xx-large;
+  text-align: center;
+}
+
