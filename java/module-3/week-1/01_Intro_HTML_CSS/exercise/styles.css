@@ -17,4 +17,27 @@ h1{
   font-size: xx-large;
   text-align: center;
 }
-
+img{
+  width: 350px;
+  height: auto;
+}
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+#facts-section {
+  color: black;
+  padding: 40PX;
+  width: 300PX;
+}
+h2{
+  text-decoration-line: underline;
+}
+blockquote{
+  font-style: italic;
+}
+form{
+  background-color: coral;
+}
