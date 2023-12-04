@@ -15,3 +15,68 @@ ul {
   margin: 0;
   padding: 0;
 }
+aside{
+  position: fixed;
+  border-right-color: rgba(0, 173, 238, 0.4);
+  border-right-style: solid;
+  border-right-width: 1px;
+  height: 100%;
+  width: 200px;
+}
+aside img{
+  height: 120px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  margin: auto;
+  
+}
+main{
+  margin-left: 200px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+nav li{
+  text-align: center;
+  align-items: center;
+  text-transform: uppercase;
+  border:rgba(0, 173, 238, 0.4);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  height: 40px;
+  width: 80%;
+  margin: auto;
+  padding: 40px;
+  list-style:none;
+  
+}
+nav li a{
+  font-weight: bold;
+  text-decoration: none;
+  color:rgb(0, 173, 238);
+}
+li:first-child{
+  text-decoration: underline;
+}
+header img{
+  height: 100px;
+  padding: 20px;
+}
+.banner{
+  width: 100%
+}
+section div{
+  width: 32%;
+  display: inline-block;
+  padding: 5px;
+  border-left-color: green;
+  border-right-color: rgba(170, 239, 135, 0.8);
+  border-right-style: solid;
+  border-right-width: 1px;
+}
+section h2{
+  color: rgb(140, 195, 111);
+}
+section div h2 i{
+  padding: 20px;
+}
