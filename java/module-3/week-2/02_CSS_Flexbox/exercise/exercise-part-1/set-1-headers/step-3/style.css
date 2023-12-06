@@ -4,15 +4,26 @@ body {
 }
 
 header {
+  display: flex;
+  justify-content: flex-start;
   background-color: #F0F0F0;
   padding: 20px;
 }
+header nav{
+  display: flex;
+flex-grow: 100px;
+}
 
 .logo {
+  display: flex;
+  flex-basis: 50%;
+  justify-content: flex-start;
   width: 140px;
 }
 
 ul {
+  display: flex;
+  justify-content: center;
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -36,4 +47,7 @@ a:visited {
 a:hover {
   color: #00AFEF;
   text-decoration: underline;
+}
+nav{
+  flex-grow: 1;
 }
