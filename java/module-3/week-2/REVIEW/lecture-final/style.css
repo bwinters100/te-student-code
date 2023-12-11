@@ -1,0 +1,216 @@
+header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+}
+
+#header-main {
+    flex-grow: 1;
+}
+
+#rules {
+    grid-area: rules;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: stretch;
+	align-content: flex-start;
+}
+
+main {
+    grid-area: main;
+    display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+}
+
+#leaders {
+    grid-area: leaders;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+	align-content: flex-start;
+}
+
+footer {
+    grid-area: footer;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 400px 1fr 200px;
+    grid-template-areas:
+        "header header header"
+        "rules main leaders"
+        "footer footer footer"
+    ;
+    gap: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        grid-template-areas:
+            "header"
+            "rules"
+            "main"
+            "leaders"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+
+    #leaders{
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+
+    }
+
+    header {
+        flex-direction: column;
+    }
+}
+
+
+/***** enter grid and flexbox CSS above this line *****/
+
+* {
+    box-sizing: border-box;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+}
+
+#logo {
+    width: 15em;
+    padding-top: 5px;
+}
+
+#turtle {
+    width: 6em;
+}
+
+#te-logo {
+    height: 6em;
+}
+
+#footer-logo {
+    height: 2em;
+    padding-left: 1em;
+}
+
+#monkey {
+    width: 7em;
+}
+
+#leader-cup {
+    height: 5em;
+}
+
+.guess-letter {
+    border-radius: 2px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    font-size: 5em;
+    color: white;
+    text-align: center;
+    width: 1em;
+} 
+
+.no-match {
+    background-color: #787c7f;
+}
+
+.match {
+    background-color:	#c8b653;
+}
+
+.exact-match {
+    background-color: #6ca965;
+}
+
+html {
+    font-size: 16px;
+}
+
+a:visited {
+    color: mediumslateblue;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: azure;
+}
+
+.container {
+    padding: 0.5rem;
+}
+
+header {
+    text-align: center;
+    background-color: white;
+}
+
+footer {
+    font-size: 0.75em;
+    padding: 10px;
+}
+
+.sidebar{
+    padding-top: 10px;
+}
+
+header, .sidebar, main, footer {
+    border: solid black 1px;
+}
+
+#rule-list{
+    font-size: .8em;
+    padding: 10px;
+}
+
+#rule-list>li{
+    list-style-type: none;
+}
+
+#site-nav ul {
+    padding-left: 0;
+}
+
+#site-nav li {
+    display: inline-block;
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#site-nav li a {
+    text-decoration: none;
+}
+
+#site-nav li a:hover {
+    background-color: lightblue;
+}
+
+#leader-table, #leader-table td , #leader-table th{
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+    padding: 5px;
+    font-size: .9em;
+}
+ 
+#leader-table th {
+    background-color: lightblue;
+}
+
+#leader-table td {
+    background-color: white;
+}
+
+#leader-table {
+    margin: 5px;
+}
