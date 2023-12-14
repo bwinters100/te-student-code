@@ -116,11 +116,11 @@ function makeHappy(array){
  *
  * Use `map` and an anonymous function.
  */
-function getFullAddressesOfProperties(array){
-    let newArray = array.map( (keys) => {
-        return keys;
+function getFullAddressesOfProperties(arr){
+    let array = arr.map((keys) => {
+        return keys.streetNumber + " " + keys.streetName + " " + keys.streetType + " " + keys.city + " " + keys.state +  " " + keys.zip;
     });
-    return newArray;
+    return stringArray = array.toString().split(",");
 }
 
 /** 
@@ -137,7 +137,24 @@ function getFullAddressesOfProperties(array){
  * @param {number[]|string[]} searchArray the array to search
  * @returns {number|string} the number or string that is largest
  **/
-function findLargest(array){}
+function findLargest(array){
+    let largestNumber = 0;
+    let largestString = " ";
+    array.forEach((element) => {
+        if(element > largestNumber){
+            largestNumber = element;
+        }
+        else if(element > largestString && isNaN(element)){
+            largestString = element;
+        }
+    });
+    if(largestString == " "){
+        return largestNumber;
+    }
+    if(largestNumber == 0){
+        return largestString;
+    }
+}
 
 /*
  * CHALLENGE
@@ -156,3 +173,15 @@ function findLargest(array){}
  *
  * Read the tests to verify you have the correct behavior.
  */
+function getSumOfSubArrayValues(array){
+    if(array == null){
+        return 0;
+    }
+    let total = 0;
+    let newArray = array.map((key) => {
+        let x = key.map((sub) =>{
+            return total += sub;
+        });
+    });
+    return total;
+}
