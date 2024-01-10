@@ -2,59 +2,59 @@ let productService = {
   allProducts: [
     {
       "productId": 1,
-      "productSku": "MUG-023",
+      "productSku": "HAI-023",
       "name": "George's Hair",
-      "description": "Start your day off right!",
-      "price": 14.99,
+      "description": "I don't like this thing!!!",
+      "price": 5.99,
       "imageName": "George's Hair.jpg"
     },
     {
       "productId": 2,
-      "productSku": "YET-001",
-      "name": "Kramer's Jacket",
-      "description": "Keep cool all day long.",
-      "price": 21.99,
-      "imageName": "https://via.placeholder.com/350x250.jpg"
+      "productSku": "PAS-001",
+      "name": "Fuscili Jerry",
+      "description": "You know the corkscrew pasta. It was Fuscili Jerry. It got stuck in me.",
+      "price": 99.99,
+      "imageName": "jerry.jpg"
     },
     {
       "productId": 3,
-      "productSku": "ART-256",
+      "productSku": "CAR-256",
       "name": "Elaine's Christmas Card",
-      "description": "Beautiful view of a galaxy",
-      "price": 9.59,
-      "imageName": "https://via.placeholder.com/350x250.jpg"
+      "description": "Free Show",
+      "price": 0.00,
+      "imageName": "card.jpg"
     },
     {
       "productId": 4,
-      "productSku": "TOY-978",
-      "name": "Toy rocket",
-      "description": "To infinite imagination",
-      "price": 39.99,
-      "imageName": "https://via.placeholder.com/350x250.jpg"
+      "productSku": "PEN-978",
+      "name": "Astronaut Pen",
+      "description": "Astronauts use it to write in space!",
+      "price": 9999.99,
+      "imageName": "Pen.webp"
     },
     {
       "productId": 5,
-      "productSku": "EAT-235",
-      "name": "Astronaut ice cream",
-      "description": "As cold as space",
-      "price": 5.79,
-      "imageName": "https://via.placeholder.com/350x250.jpg"
+      "productSku": "PEZ-235",
+      "name": "Tweety PEZ Dispenser",
+      "description": "Great for an eveming at the symphony!",
+      "price": 1.79,
+      "imageName": "pez.jpg"
     },
     {
       "productId": 6,
-      "productSku": "HAT-928",
-      "name": "Solar Geeks baseball cap",
-      "description": "Look stylish with our logo",
-      "price": 16.89,
-      "imageName": "https://via.placeholder.com/350x250.jpg"
+      "productSku": "RYE-928",
+      "name": "Rye Bread",
+      "description": "I know this sounds crazy but, I have to have that rye.",
+      "price": 2.89,
+      "imageName": "bread.jpg"
     },
     {
       "productId": 7,
-      "productSku": "LIT-612",
-      "name": "Intro to Astrophysics",
-      "description": "Learn about astrophysics",
-      "price": 7.99,
-      "imageName": "https://via.placeholder.com/350x250.jpg"
+      "productSku": "CIG-612",
+      "name": "Cigar Indian",
+      "description": "Not a very good gift",
+      "price": 499.99,
+      "imageName": "Cigar.jpg"
     }
   ],
 

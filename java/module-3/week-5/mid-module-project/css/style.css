@@ -99,6 +99,10 @@ footer{
     grid-area: cart;
     text-align: right;
 }
+img{
+    height: 250px;
+    width: 350px;
+}
 
 
 @media(max-width:1024px){
