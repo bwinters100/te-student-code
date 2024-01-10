@@ -3,15 +3,15 @@ let productService = {
     {
       "productId": 1,
       "productSku": "MUG-023",
-      "name": "Solar Geeks coffee mug",
+      "name": "George's Hair",
       "description": "Start your day off right!",
       "price": 14.99,
-      "imageName": "https://via.placeholder.com/350x250.jpg"
+      "imageName": "George's Hair.jpg"
     },
     {
       "productId": 2,
       "productSku": "YET-001",
-      "name": "Solar Geeks Yeti",
+      "name": "Kramer's Jacket",
       "description": "Keep cool all day long.",
       "price": 21.99,
       "imageName": "https://via.placeholder.com/350x250.jpg"
@@ -19,7 +19,7 @@ let productService = {
     {
       "productId": 3,
       "productSku": "ART-256",
-      "name": "Galactic poster",
+      "name": "Elaine's Christmas Card",
       "description": "Beautiful view of a galaxy",
       "price": 9.59,
       "imageName": "https://via.placeholder.com/350x250.jpg"

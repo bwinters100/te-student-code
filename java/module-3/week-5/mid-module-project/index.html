@@ -14,14 +14,33 @@
     <script src="script/app.js"></script>
   </head>
   <body>
+    <header>
+      <img id="logo" src="seinfeld.jpg" alt="logo">
+    </header>
+    <nav>
+      <div class="Left-Stuff">
+        <a href="#">Home</a>
+        <a href="#">Cart</a>
+      </div>
+      <div class="Right-Stuff">
+        <a href="#">Logout</a>
+      </div>
+    </nav>
       <main>
+        <div>
+          <h1>Products</h1>
+          <input type="text">
+        </div>
+        <p>
+          Seinfeld is awesome
+        </p>
         <section id="product-cards">
           <article class="product-card">
             <div class="sku">SKU-001</div>
-            <div class="price">$1.99</div>
-            <div class="product-name action" data-id="1">A super product</div>
+            <div class="price">$25.99</div>
+            <div class="product-name action" data-id="1">For a Bald Individual</div>
             <div class="product-image">
-              <img src="https://via.placeholder.com/350x250.jpg">
+              <img id="hair" src="George's Hair.jpg">
             </div>
             <div class="cart">
               <i class="fa-solid fa-cart-plus icon action" title="Add item to cart"></i>
@@ -29,10 +48,10 @@
           </article>
           <article class="product-card">
             <div class="sku">SKU-002</div>
-            <div class="price">$2.99</div>
-            <div class="product-name action" data-id="2">A super-duper product</div>
+            <div class="price">$99.99</div>
+            <div class="product-name action" data-id="2">Fuscili Jerry!</div>
             <div class="product-image">
-              <img src="https://via.placeholder.com/350x250.jpg">
+              <img id="jerry" src="Jerry.jpg">
             </div>
             <div class="cart">
               <i class="fa-solid fa-cart-plus icon action" title="Add item to cart"></i>
@@ -40,10 +59,10 @@
           </article>
           <article class="product-card">
             <div class="sku">SKU-003</div>
-            <div class="price">$3.99</div>
-            <div class="product-name action" data-id="3">A super-duper-duper product</div>
+            <div class="price">$999.99</div>
+            <div class="product-name action" data-id="3">Astronaut Pen</div>
             <div class="product-image">
-              <img src="https://via.placeholder.com/350x250.jpg">
+              <img id="pen" src="Pen.webp">
             </div>
             <div class="cart">
               <i class="fa-solid fa-cart-plus icon action" title="Add item to cart"></i>
@@ -51,15 +70,20 @@
           </article>
           <article class="product-card">
             <div class="sku">SKU-004</div>
-            <div class="price">$4.99</div>
-            <div class="product-name action" data-id="4">A super-duper-duper-duper product. I mean, a really awesome product. </div>
+            <div class="price">$0.00</div>
+            <div class="product-name action" data-id="4">Free Show </div>
             <div class="product-image">
-              <img src="https://via.placeholder.com/350x250.jpg">
+              <img id="card" src="card.jpg">
             </div>
             <div class="cart">
               <i class="fa-solid fa-cart-plus icon action" title="Add item to cart"></i>
             </div>
           </article>
+          <footer>
+            <p>
+              &copy 2023 All Jokes Reserved
+            </p>
+          </footer>
         </section>
       </main>
   </body>
