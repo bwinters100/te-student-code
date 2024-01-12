@@ -45,7 +45,8 @@ function handleDOMContentLoaded(){
         cart.classList.add("fa-cart-plus");
         cart.classList.add("icon");
         cart.classList.add("action");
-        cart.setAttribute("title", "Add item to cart")
+        cart.setAttribute("title", product.name)
+        divName.addEventListener("click", handleCartClick);
     })
 }
 
@@ -64,4 +65,21 @@ function handleDOMContentLoaded(){
          if(product){
              alert(product.description);
          }
+     }
+     
+     function handleCartClick(event){
+         let divClick = event.target;
+         let titleCard = divClick.getAttribute("icon");
+         let cartItems = productService.getProducts();
+         let product = cartItems.find((item) => {
+            if(item.sku == titleCard){
+                return true;
+            }
+            else{
+                return false;
+            }
+        })
+        if(product){
+            alert("item added to cart.");
+        }
      }

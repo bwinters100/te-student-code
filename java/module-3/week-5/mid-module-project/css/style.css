@@ -21,26 +21,20 @@ header{
     justify-content: center;
 }
 nav{
+    font-family:fantasy;
     grid-area: nav;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
 }
 main{
     grid-area: main;
     overflow: auto;
 }
+
 footer{
     grid-area: footer;
-}
-
-.Left-Stuff{
-    display: grid;
-    justify-items: start;
-}
-
-.Right-Stuff{
-    display: grid;
-    justify-items: end;
+    display: flex;
+    justify-content: center;
 }
 
 #logo{
@@ -70,6 +64,7 @@ footer{
 
 #product-cards{
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
 }
@@ -106,6 +101,10 @@ img{
 
 
 @media(max-width:1024px){
+    #logo{
+        width: 50vw;
+        height: auto;
+    }
     body{
         background-color:rgb(235, 213, 91);
         grid-template-areas: 
