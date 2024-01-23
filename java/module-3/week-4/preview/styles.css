@@ -1,0 +1,17 @@
+main {
+    background-color: aqua;
+}
+
+
+#table1 {
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+}
+
+#table1 tr td {
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+}

@@ -1,0 +1,38 @@
+#div1 {
+    border: thick solid red;
+    padding: 15px;
+}
+
+#div2 {
+    border: thick solid green;
+    padding: 15px;
+
+}
+
+#div3 {
+    border: thick solid blue;
+    padding: 15px;
+
+}
+
+#table1 {
+    border: solid 3px;
+    display: inline-table;
+    border-collapse: collapse;
+}
+
+#table1 th,
+#table1 td {
+    border: solid 1px;
+    padding: 5px;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+
