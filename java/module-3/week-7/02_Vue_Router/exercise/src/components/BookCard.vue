@@ -1,4 +1,5 @@
 <template>
+<router-link v-bind:to="{ name: 'bookDetails', params: {isbn : book.isbn} }">
   <div class="card" v-bind:class="{ read: book.read }">
     <h2 class="book-title">{{ book.title }}</h2> 
     <h3 class="book-author">{{ book.author }}</h3>
@@ -9,6 +10,7 @@
     </div>
     <button v-if="enableAdd" v-on:click.prevent="addToReadingList(book)">Add to Reading List</button>
   </div>
+</router-link>
 </template>
 
 <script>

@@ -67,5 +67,5 @@ export default {
   width: 80%;
   left: 10%;
   font-size: 1rem;
-}
+} 
 </style>
