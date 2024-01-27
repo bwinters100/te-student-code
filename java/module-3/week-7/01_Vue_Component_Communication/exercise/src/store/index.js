@@ -29,10 +29,10 @@ export function createStore() {
         isbn: "9783125971400"
       }
     ]},
-    mutations: {
-      SET_READ_STATUS(state, payload) {
-      payload.book.read = payload.value;
-    },
+   mutations: {
+     SET_READ_STATUS(state, payload) {
+     payload.book.read = payload.value;
+   },
       SAVE_BOOK(state, book) {
       state.books.push(book);
     }

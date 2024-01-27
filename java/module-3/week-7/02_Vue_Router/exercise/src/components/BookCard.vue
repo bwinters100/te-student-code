@@ -29,7 +29,7 @@ export default {
       delete addedBook.bestSeller;
       delete addedBook.newRelease;
       this.$store.commit('SAVE_BOOK', addedBook);
-    }
+    },
   }
 }
 </script>
