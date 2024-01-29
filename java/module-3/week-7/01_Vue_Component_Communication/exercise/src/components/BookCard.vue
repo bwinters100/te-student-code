@@ -3,12 +3,12 @@
     <h2 class="book-title">{{ book.title }}</h2>
     <h3 class="book-author">{{ book.author }}</h3>
     <img class="book-image" v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
-    <div class="button-container" v-if="! enableAdd">
+    <!-- <div class="button-container" v-if="! enableAdd"> -->
       <button class="mark-read" v-on:click.prevent="setRead(true)" v-if="! book.read">Mark Read</button>
       <button class="mark-unread" v-on:click.prevent="setRead(false)" v-if="book.read">Mark Unread</button>
-    </div>
-    <button v-if="enableAdd" v-on:click.prevent="addToReadingList(book)">Add to Reading List</button>
-  </div>
+    <!-- </div>
+    <button v-if="enableAdd" v-on:click.prevent="addToReadingList(book)">Add to Reading List</button> -->
+  </div> 
 </template>
 
 <script>
