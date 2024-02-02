@@ -29,11 +29,22 @@ export function createStore() {
         isbn: "9783125971400"
       }
     ]},
+<<<<<<< HEAD
     mutations: {},
+=======
+   mutations: {
+     SET_READ_STATUS(state, payload) {
+     payload.book.read = payload.value;
+   },
+      SAVE_BOOK(state, book) {
+      state.books.push(book);
+    }
+  },
+>>>>>>> 4ff05e7a5a45779a1e20f260a945e463ee67b497
     actions: {},
     modules: {},
     // Strict should not be used in production code. It is used here as a
     // learning aid to warn you if state is modified without using a mutation.
     strict: true
-  })
+  });
 }

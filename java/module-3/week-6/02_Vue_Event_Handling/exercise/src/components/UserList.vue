@@ -52,7 +52,7 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnActivateDeactivate">Activate or Deactivate</button>
+            <button class="btnActivateDeactivate" v-on:click.prevent="flip(user.id)">{{user.status === "Active" ? "Deactivate":"Activate"}}</button>
           </td>
         </tr>
       </tbody>
@@ -64,24 +64,24 @@
       <button>Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button v-on:click ="showForm = !showForm">Add New User</button>
 
-    <form id="frmAddNewUser">
+    <form id="frmAddNewUser" v-show="showForm">
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" />
+        <input type="text" id="firstName" name="firstName" v-model="newUser.firstName"/>
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" />
+        <input type="text" id="lastName" name="lastName" v-model="newUser.lastName"/>
       </div>
       <div class="field">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" />
+        <input type="text" id="username" name="username" v-model="newUser.username"/>
       </div>
       <div class="field">
         <label for="emailAddress">Email Address:</label>
-        <input type="text" id="emailAddress" name="emailAddress" />
+        <input type="text" id="emailAddress" name="emailAddress" v-model="newUser.emailAddress"/>
       </div>
       <button type="submit" class="btn save">Save User</button>
     </form>
@@ -92,6 +92,7 @@
 export default {
   data() {
     return {
+      showForm: false,
       filter: {
         firstName: "",
         lastName: "",
@@ -161,6 +162,15 @@ export default {
     };
   },
   methods: {
+    flip(id){
+      let userOne;
+      this.users.forEach((user)=>{
+        if(user.id === id){
+          userOne = user;
+        }
+      })
+      userOne.status = (userOne.status === "Active" ? "Deactivate":"Activate")
+    },
     getNextUserId() {
       return this.nextUserId++;
     }

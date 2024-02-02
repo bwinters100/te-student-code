@@ -5,10 +5,12 @@ body {
 }
 
 .container {
+  display: flex;
   background-color: #F0F0F0;
 }
 
 .box {
+  flex-basis: 50%;
   padding: 40px 55px;
   margin: 15px 0;
   background-color: #00AFEF;
@@ -18,5 +20,11 @@ body {
 }
 
 .box:nth-child(even) {
+  display: flex;
+  flex-grow: 1;
   background-color: #005270;
+}
+.box:nth-child(odd) {
+  display: flex;
+  flex-grow: 1;
 }

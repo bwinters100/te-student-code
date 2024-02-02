@@ -1,0 +1,43 @@
+/* this is a comment */
+head {
+  /* style declarations */
+  /* every style declaration consists of two parts: a property and a value */
+  /* seperated by a colon */
+  /* ends with a semi-colon */
+  font-family: Arial, Helvetica, sans-serif;
+  color: bisque;
+  background-color: black;
+}
+body{
+  font-size:x-large;
+  color:dimgray;
+  background-color:burlywood;
+}
+h1{
+  font-size: xx-large;
+  text-align: center;
+}
+img{
+  width: 350px;
+  height: auto;
+}
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+#facts-section {
+  color: black;
+  padding: 40PX;
+  width: 300PX;
+}
+h2{
+  text-decoration-line: underline;
+}
+blockquote{
+  font-style: italic;
+}
+form{
+  background-color: coral;
+}

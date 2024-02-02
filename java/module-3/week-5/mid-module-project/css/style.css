@@ -2,3 +2,131 @@
     style.css - this stylesheet is linked from index.html to apply styles to the products home page.
     Add all of your custom styles here.
 */
+body{
+    display: grid;
+    background-color:rgb(235, 213, 91);
+    grid-template-areas: 
+    "header"
+    "nav"
+    "main"
+    "footer";
+    grid-template-rows: 200px, 25px, 1px, 25px;
+    height: 100vh;
+}
+
+header{
+    grid-area: header;
+    background-color:black;
+    display: flex;
+    justify-content: center;
+}
+nav{
+    font-family:fantasy;
+    grid-area: nav;
+    display: flex;
+    justify-content:space-between;
+}
+main{
+    grid-area: main;
+    overflow: auto;
+}
+
+footer{
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+}
+
+#logo{
+    width:700px;
+    height: 200px;
+}
+
+#hair{
+    height: 250px;
+    width: 350px;
+}
+
+#pen{
+    height: 250px;
+    width: 350px;
+}
+
+#card{
+    height: 250px;
+    width: 350px;
+}
+
+#jerry{
+    height: 250px;
+    width: 350px;
+}
+
+#product-cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.product-card{
+    background-color: rgb(19, 156, 202);
+    display: grid;
+    grid-template-areas: 
+    "sku              price"
+    "name             name"
+    "image            image"
+    ".                cart";
+}
+.sku{
+    grid-area: sku;
+}
+.price{
+    grid-area: price;
+    text-align: right;
+}
+.name{
+    grid-area: name;
+}
+.product-image{
+    grid-area: image;
+}
+.cart{
+    grid-area: cart;
+    text-align: right;
+}
+img{
+    height: 250px;
+    width: 350px;
+}
+
+
+@media(max-width:1024px){
+    #logo{
+        width: 50vw;
+        height: auto;
+    }
+    body{
+        background-color:rgb(235, 213, 91);
+        grid-template-areas: 
+        "header"
+        "nav"
+        "main"
+        "footer";
+        grid-template-rows: 200px, 25px, 1px, 25px;
+        height: 100vh;
+    }
+
+}
+@media(max-width: 425px){
+    body{
+        background-color:rgb(235, 213, 91);
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr, 1fr, 1fr, 1fr;
+        grid-template-areas: 
+        "header"
+        "nav"
+        "main"
+        "footer";
+        height: 100vh;
+    }
+}

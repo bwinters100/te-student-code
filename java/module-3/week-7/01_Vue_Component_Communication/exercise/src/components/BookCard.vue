@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="card">
     <h2 class="book-title">
          {{ book.title }} 
@@ -10,10 +11,23 @@
         <button class="mark-unread" v-on:click.prevent="setRead(false)" v-if="book.read">Mark Unread</button>
     </div>
   </div>
+=======
+  <div class="card" v-bind:class="{ read:book.read }">
+    <h2 class="book-title">{{ book.title }}</h2>
+    <h3 class="book-author">{{ book.author }}</h3>
+    <img class="book-image" v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
+    <!-- <div class="button-container" v-if="! enableAdd"> -->
+      <button class="mark-read" v-on:click.prevent="setRead(true)" v-if="! book.read">Mark Read</button>
+      <button class="mark-unread" v-on:click.prevent="setRead(false)" v-if="book.read">Mark Unread</button>
+    <!-- </div>
+    <button v-if="enableAdd" v-on:click.prevent="addToReadingList(book)">Add to Reading List</button> -->
+  </div> 
+>>>>>>> 4ff05e7a5a45779a1e20f260a945e463ee67b497
 </template>
 
 <script>
 export default {
+<<<<<<< HEAD
     props:['book'],
 
  methods: {
@@ -21,6 +35,26 @@ export default {
             this.$store.commit('SET_READ_STATUS', {book: this.book, value: value});
         }
     }
+=======
+  props: {
+    book: Object,
+    enableAdd: {
+      type: Boolean,
+      default: false
+   }
+  },
+  methods: {
+    setRead(value){
+      this.$store.commit('SET_READ_STATUS', {book: this.book, value: value});
+    },
+    addToReadingList(book) {
+      let addedBook = Object.assign({ read: false }, book);
+      delete addedBook.bestSeller;
+      delete addedBook.newRelease;
+      this.$store.commit('SAVE_BOOK', addedBook);
+    }
+  }
+>>>>>>> 4ff05e7a5a45779a1e20f260a945e463ee67b497
 }
 </script>
 
@@ -42,6 +76,24 @@ export default {
 }
 
 .card .book-author {
+<<<<<<< HEAD
     font-size: 1rem;
 }
+=======
+  font-size: 1rem;
+}
+
+.book-image {
+  width: 80%;
+}
+
+.mark-read, .mark-unread {
+  display: block;
+  position: absolute;
+  bottom: 40px;
+  width: 80%;
+  left: 10%;
+  font-size: 1rem;
+} 
+>>>>>>> 4ff05e7a5a45779a1e20f260a945e463ee67b497
 </style>
